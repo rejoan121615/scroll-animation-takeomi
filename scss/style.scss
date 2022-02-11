@@ -42,262 +42,184 @@ div {
 
 section {
     width: 100%;
-    min-height: 600px;
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    @include resp($xl) {
-        height: initial;
-    }
     .container {
-        width: 100%;
-        max-width: 300px;
         margin-left: auto;
         margin-right: auto;
-        // grid-column: 10px;
-        // grid style
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-template-rows: 150px 250px 150px;
-        @include resp ($sm) {
-          grid-template-rows: 200px 250px 200px;
-        }
-        @include resp($xl) {
-            grid-template-columns: repeat(12, 1fr);
-            grid-template-rows: repeat(12, 1fr);
-            row-gap: 20px;
-            column-gap: 20px;
-        }
+        max-width: 300px;
         @each $screen, $val in $respList {
             @include resp($screen) {
                 max-width: $val;
             }
         }
+        @include resp($xl) {
+            position: relative;
+            height: 100%;
+        }
+
         // left side phone img
         .left_left {
-            grid-column: 1/-1;
-            grid-row: 2/3;
             @include resp($xl) {
-                grid-column: 1/6;
-                grid-row: 2/-2;
+                width: 370px;
+                position: absolute;
+                left: 0px;
+                top: 100px;
             }
-            align-items: center;
-            justify-content: center;
-            .img_wrap {
-                width: 155px;
-                @include resp($xl) {
-                    width: 85%;
-                }
-                img {
-                    @include resp($xl) {
-                        width: 100%;
-                    }
-                }
+            img {
+                width: 100%;
             }
         }
         // top left
         .top_left {
-            grid-column: 1/2;
-            grid-row: 1/2;
-            @include flex(column);
             @include resp($xl) {
-                grid-column: 5/8;
-                grid-row: 1/7;
-            }
-
-            // img wrap
-            .img_wrap {
-                img {
-                    width: 145px;
+                width: 210px;
+                position: absolute;
+                top: 0px;
+                left: 320px;
+                @include flex(column) {
+                    align-items: center;
                 }
             }
-            .icon_text {
-                @include flex(row) {
-                    justify-content: center;
+            .main_img {
+                @include resp($xl) {
+                    width: 100%;
                 }
-                img {
-                    width: 80px;
+            }
+            .icon {
+                @include resp($xl) {
+                    width: 70%;
                     margin-top: 5px;
-                    @include resp($xl) {
-                        width: 200px;
-                        margin-top: 10px;
-                    }
                 }
             }
         }
         // top right
         .top_right {
-            justify-content: space-between;
-            // display: none!important;
-            @include flex(row) {
-                flex-wrap: nowrap;
-                justify-content: flex-end;
-            }
-            grid-column: 2/3;
-            grid-row: 1/2;
             @include resp($xl) {
-                grid-column: -6/-1;
-                grid-row: 1/6;
-                justify-content: space-between;
+                width: 430px;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+                @include flex(row) {
+                    justify-content: flex-end;
+                }
             }
             .icon_text {
-                width: 55px;
-                @include flex(column);
-                @include resp($sm) {
-                    width: 100px;
-                    margin-right: 10px;
-                    flex-wrap: nowrap;
-                }
-                img {
-                    width: 100%;
-                    @include resp($sm) {
-                        margin-bottom: 10px;
-                        &:last-child {
-                            margin-left: -18px;
-                            width: 120%;
-                        }
-                    }
-                }
                 @include resp($xl) {
-                    width: 40%;
+                    width: 180px;
+                    margin-right: 15px;
                     @include flex(column) {
-                        align-items: center;
-                        justify-content: center;
+                        justify-content: flex-start;
+                        align-items: flex-end;
                     }
                 }
                 img {
                     @include resp($xl) {
-                        width: 125px;
+                        width: 165px;
+                        margin-top: 10px;
                         &:last-child {
-                            width: 250px;
-                            margin-right: 20px;
+                            width: 195px;
+                            margin-left: -15px;
                         }
                     }
                 }
             }
-            .img_wrap {
-                width: 80px;
-                @include resp($sm) {
-                    width: 135px;
-                }
+            .main_img {
                 @include resp($xl) {
-                    width: 55%;
+                    width: 230px;
                 }
-                img {
-                    width: 100%;
-                }
-                
             }
         }
         // bottom right
         .bottom_right {
-            // display: none !important;
-            @include flex(column) {
-                justify-content: flex-start;
-                flex-wrap: nowrap;
-            }
-            grid-column: 2/3;
-            grid-row: 3/4;
             @include resp($xl) {
-                grid-column: -5/-1;
-                grid-row: 7/-3;
-                justify-content: flex-end;
+                position: absolute;
+                right: 0px;
+                top: 335px;
+                width: 40%;
+                @include flex(row) {
+                    justify-content: space-between;
+                    align-items: flex-start;
+                }
             }
-            .img_wrap {
-                order: 5;
-                @include resp($xl) {
-                    width: 73%;
-                }
-                img {
-                    width: 100%;
-                }
+            .main_img {
+                width: 310px;
+                position: relative;
             }
             .icon_text {
-                order: 7;
-                flex-flow: row wrap;
-                justify-content: center;
-                @include resp($xl) {
-                    width: 28%;
-                    @include flex(column) {
-                        justify-content: flex-end;
-                    }
-                }
+                width: 30%;
+                transform: translateX(35px);
+                margin-top: 35px;
                 img {
-                    &:first-child {
-                        width: 52px;
-                    }
+                    width: 110px;
                     &:last-child {
-                        width: 55px;
-                    }
-                    @include resp($xl) {
-                        &:first-child {
-                            width: 130px;
-                            margin-right: 10px;
-                        }
-                        &:last-child {
-                            width: 170px;
-                        }
+                        width: 135px;
                     }
                 }
             }
         }
         // bottom left
         .bottom_left {
-            grid-column: 1/2;
-            grid-row: 3/4;
             @include resp($xl) {
-                grid-column: 5/9;
-                grid-row: 7/-1;
                 @include flex(row) {
-                    align-items: flex-end;
-                }
-            }
-            .icon_text {
-                width: 30%;
-                @include flex(column) {
                     justify-content: flex-end;
                 }
-                @include resp($xl) {
-                    width: 50%;
-                    @include flex(column) {
-                        align-items: center;
-                        justify-content: center;
-                    }
-                }
-                img {
-                    width: 25px;
-                    @include resp($xl) {
-                        &:first-child {
-                            width: 150px;
-                            margin-right: 15px;
-                        }
-                        &:last-child {
-                            width: 190px;
-                        }
-                    }
-                }
+                width: 436px;
+                position: absolute;
+                top: 400px;
+                left: 265px;
             }
-            .img_wrap {
-                @include flex(row) {
+            .main_img {
+                width: 185px;
+            }
+            .icon_text {
+                width: 40%;
+                @include flex(column) {
+                    justify-content: flex-end;
                     align-items: flex-end;
                 }
-                width: 60%;
-                @include resp($xl) {
-                    width: 50%;
+                margin-right: 10px;
+                img {
+                    width: 70px;
+                    &:first-child {
+                      margin-right: 15px;
+                    }
+                    &:last-child {
+                        width: 85px;
+                        margin-top: 20px;
+                    }
                 }
             }
         }
-        .icon_text {
-            width: 100%;
-        }
-        // on every element
-        .left_left,
-        .top_left,
-        .top_right,
-        .bottom_left,
-        .bottom_right {
-            display: flex;
-        }
+    }
+    // line style
+    .line1,
+    .line2,
+    .line3,
+    .line4 {
+        width: 100px;
+        height: 1px;
+        border-bottom: 2px dotted black;
+        top: 500px;
+        position: absolute;
+    }
+    .line1 {
+        width: 120px;
+        top: 125px;
+        left: 215px;
+    }
+    .line2 {
+        width: 665px;
+        top: 300px;
+        left: 260px;
+    }
+    .line3 {
+        width: 585px;
+        left: 255px;
+        top: 340px;
+    }
+    .line4 {
+        width: 345px;
+        left: 185px;
+        top: 456px;
     }
 }
