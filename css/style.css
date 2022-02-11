@@ -16,12 +16,20 @@ div {
 
 section {
   width: 100%;
+  min-height: 600px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@media only screen and (min-width: 1200px) {
+  section {
+    height: initial;
+  }
 }
 section .container {
   width: 100%;
   max-width: 300px;
-  padding-left: 10px;
-  padding-right: 10px;
   margin-left: auto;
   margin-right: auto;
   display: grid;
@@ -30,27 +38,7 @@ section .container {
 }
 @media only screen and (min-width: 576px) {
   section .container {
-    width: 540px;
-  }
-}
-@media only screen and (min-width: 768px) {
-  section .container {
-    width: 720px;
-  }
-}
-@media only screen and (min-width: 992px) {
-  section .container {
-    width: 960px;
-  }
-}
-@media only screen and (min-width: 1200px) {
-  section .container {
-    width: 1140px;
-  }
-}
-@media only screen and (min-width: 1400px) {
-  section .container {
-    width: 1320px;
+    grid-template-rows: 200px 250px 200px;
   }
 }
 @media only screen and (min-width: 1200px) {
@@ -59,6 +47,31 @@ section .container {
     grid-template-rows: repeat(12, 1fr);
     row-gap: 20px;
     column-gap: 20px;
+  }
+}
+@media only screen and (min-width: 576px) {
+  section .container {
+    max-width: 540px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  section .container {
+    max-width: 720px;
+  }
+}
+@media only screen and (min-width: 992px) {
+  section .container {
+    max-width: 960px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  section .container {
+    max-width: 1140px;
+  }
+}
+@media only screen and (min-width: 1400px) {
+  section .container {
+    max-width: 1320px;
   }
 }
 section .container .left_left {
@@ -117,9 +130,11 @@ section .container .top_left .icon_text img {
   }
 }
 section .container .top_right {
+  justify-content: space-between;
   display: flex;
   flex-flow: row wrap;
   flex-wrap: nowrap;
+  justify-content: flex-end;
   grid-column: 2/3;
   grid-row: 1/2;
 }
@@ -132,9 +147,27 @@ section .container .top_right {
 }
 section .container .top_right .icon_text {
   width: 55px;
+  display: flex;
+  flex-flow: column wrap;
+}
+@media only screen and (min-width: 576px) {
+  section .container .top_right .icon_text {
+    width: 100px;
+    margin-right: 10px;
+    flex-wrap: nowrap;
+  }
 }
 section .container .top_right .icon_text img {
   width: 100%;
+}
+@media only screen and (min-width: 576px) {
+  section .container .top_right .icon_text img {
+    margin-bottom: 10px;
+  }
+  section .container .top_right .icon_text img:last-child {
+    margin-left: -18px;
+    width: 120%;
+  }
 }
 @media only screen and (min-width: 1200px) {
   section .container .top_right .icon_text {
@@ -147,7 +180,7 @@ section .container .top_right .icon_text img {
 }
 @media only screen and (min-width: 1200px) {
   section .container .top_right .icon_text img {
-    width: 225px;
+    width: 125px;
   }
   section .container .top_right .icon_text img:last-child {
     width: 250px;
@@ -157,18 +190,24 @@ section .container .top_right .icon_text img {
 section .container .top_right .img_wrap {
   width: 80px;
 }
-section .container .top_right .img_wrap img {
-  width: 100%;
+@media only screen and (min-width: 576px) {
+  section .container .top_right .img_wrap {
+    width: 135px;
+  }
 }
 @media only screen and (min-width: 1200px) {
   section .container .top_right .img_wrap {
-    width: 50%;
+    width: 55%;
   }
+}
+section .container .top_right .img_wrap img {
+  width: 100%;
 }
 section .container .bottom_right {
   display: flex;
   flex-flow: column wrap;
   justify-content: flex-start;
+  flex-wrap: nowrap;
   grid-column: 2/3;
   grid-row: 3/4;
 }
@@ -192,6 +231,8 @@ section .container .bottom_right .img_wrap img {
 }
 section .container .bottom_right .icon_text {
   order: 7;
+  flex-flow: row wrap;
+  justify-content: center;
 }
 @media only screen and (min-width: 1200px) {
   section .container .bottom_right .icon_text {
@@ -202,10 +243,10 @@ section .container .bottom_right .icon_text {
   }
 }
 section .container .bottom_right .icon_text img:first-child {
-  width: 55px;
+  width: 52px;
 }
 section .container .bottom_right .icon_text img:last-child {
-  width: 65px;
+  width: 55px;
 }
 @media only screen and (min-width: 1200px) {
   section .container .bottom_right .icon_text img:first-child {
