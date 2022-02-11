@@ -1,0 +1,281 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  width: 100%;
+  display: inline-block;
+  height: auto;
+}
+
+div {
+  width: 100%;
+}
+
+section {
+  width: 100%;
+}
+section .container {
+  width: 100%;
+  max-width: 300px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 150px 250px 150px;
+}
+@media only screen and (min-width: 576px) {
+  section .container {
+    width: 540px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  section .container {
+    width: 720px;
+  }
+}
+@media only screen and (min-width: 992px) {
+  section .container {
+    width: 960px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  section .container {
+    width: 1140px;
+  }
+}
+@media only screen and (min-width: 1400px) {
+  section .container {
+    width: 1320px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  section .container {
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(12, 1fr);
+    row-gap: 20px;
+    column-gap: 20px;
+  }
+}
+section .container .left_left {
+  grid-column: 1/-1;
+  grid-row: 2/3;
+  align-items: center;
+  justify-content: center;
+}
+@media only screen and (min-width: 1200px) {
+  section .container .left_left {
+    grid-column: 1/6;
+    grid-row: 2/-2;
+  }
+}
+section .container .left_left .img_wrap {
+  width: 155px;
+}
+@media only screen and (min-width: 1200px) {
+  section .container .left_left .img_wrap {
+    width: 85%;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  section .container .left_left .img_wrap img {
+    width: 100%;
+  }
+}
+section .container .top_left {
+  grid-column: 1/2;
+  grid-row: 1/2;
+  display: flex;
+  flex-flow: column wrap;
+}
+@media only screen and (min-width: 1200px) {
+  section .container .top_left {
+    grid-column: 5/8;
+    grid-row: 1/7;
+  }
+}
+section .container .top_left .img_wrap img {
+  width: 145px;
+}
+section .container .top_left .icon_text {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+section .container .top_left .icon_text img {
+  width: 80px;
+  margin-top: 5px;
+}
+@media only screen and (min-width: 1200px) {
+  section .container .top_left .icon_text img {
+    width: 200px;
+    margin-top: 10px;
+  }
+}
+section .container .top_right {
+  display: flex;
+  flex-flow: row wrap;
+  flex-wrap: nowrap;
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+@media only screen and (min-width: 1200px) {
+  section .container .top_right {
+    grid-column: -6/-1;
+    grid-row: 1/6;
+    justify-content: space-between;
+  }
+}
+section .container .top_right .icon_text {
+  width: 55px;
+}
+section .container .top_right .icon_text img {
+  width: 100%;
+}
+@media only screen and (min-width: 1200px) {
+  section .container .top_right .icon_text {
+    width: 40%;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  section .container .top_right .icon_text img {
+    width: 225px;
+  }
+  section .container .top_right .icon_text img:last-child {
+    width: 250px;
+    margin-right: 20px;
+  }
+}
+section .container .top_right .img_wrap {
+  width: 80px;
+}
+section .container .top_right .img_wrap img {
+  width: 100%;
+}
+@media only screen and (min-width: 1200px) {
+  section .container .top_right .img_wrap {
+    width: 50%;
+  }
+}
+section .container .bottom_right {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-start;
+  grid-column: 2/3;
+  grid-row: 3/4;
+}
+@media only screen and (min-width: 1200px) {
+  section .container .bottom_right {
+    grid-column: -5/-1;
+    grid-row: 7/-3;
+    justify-content: flex-end;
+  }
+}
+section .container .bottom_right .img_wrap {
+  order: 5;
+}
+@media only screen and (min-width: 1200px) {
+  section .container .bottom_right .img_wrap {
+    width: 73%;
+  }
+}
+section .container .bottom_right .img_wrap img {
+  width: 100%;
+}
+section .container .bottom_right .icon_text {
+  order: 7;
+}
+@media only screen and (min-width: 1200px) {
+  section .container .bottom_right .icon_text {
+    width: 28%;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-end;
+  }
+}
+section .container .bottom_right .icon_text img:first-child {
+  width: 55px;
+}
+section .container .bottom_right .icon_text img:last-child {
+  width: 65px;
+}
+@media only screen and (min-width: 1200px) {
+  section .container .bottom_right .icon_text img:first-child {
+    width: 130px;
+    margin-right: 10px;
+  }
+  section .container .bottom_right .icon_text img:last-child {
+    width: 170px;
+  }
+}
+section .container .bottom_left {
+  grid-column: 1/2;
+  grid-row: 3/4;
+}
+@media only screen and (min-width: 1200px) {
+  section .container .bottom_left {
+    grid-column: 5/9;
+    grid-row: 7/-1;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: flex-end;
+  }
+}
+section .container .bottom_left .icon_text {
+  width: 30%;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: flex-end;
+}
+@media only screen and (min-width: 1200px) {
+  section .container .bottom_left .icon_text {
+    width: 50%;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+  }
+}
+section .container .bottom_left .icon_text img {
+  width: 25px;
+}
+@media only screen and (min-width: 1200px) {
+  section .container .bottom_left .icon_text img:first-child {
+    width: 150px;
+    margin-right: 15px;
+  }
+  section .container .bottom_left .icon_text img:last-child {
+    width: 190px;
+  }
+}
+section .container .bottom_left .img_wrap {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: flex-end;
+  width: 60%;
+}
+@media only screen and (min-width: 1200px) {
+  section .container .bottom_left .img_wrap {
+    width: 50%;
+  }
+}
+section .container .icon_text {
+  width: 100%;
+}
+section .container .left_left,
+section .container .top_left,
+section .container .top_right,
+section .container .bottom_left,
+section .container .bottom_right {
+  display: flex;
+}
+
+/*# sourceMappingURL=style.css.map */
