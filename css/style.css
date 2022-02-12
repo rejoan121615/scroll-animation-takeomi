@@ -36,6 +36,11 @@ section .container {
     grid-template-rows: 1fr 380px 1fr;
   }
 }
+@media only screen and (min-width: 1200px) {
+  section .container {
+    display: block;
+  }
+}
 section .container .left_left {
   grid-column: 1/-1;
   grid-row: 2/3;
@@ -115,17 +120,40 @@ section .container .top_right .icon_text {
   width: 50px;
   margin-right: 10px;
 }
+@media only screen and (min-width: 576px) {
+  section .container .top_right .icon_text {
+    transform: translateX(-35px);
+  }
+}
 @media only screen and (min-width: 768px) {
   section .container .top_right .icon_text {
     width: 150px;
+    transform: translateX(-5px);
   }
 }
 section .container .top_right .icon_text img {
   margin-top: 10px;
+  width: 50px;
+}
+@media only screen and (min-width: 576px) {
+  section .container .top_right .icon_text img {
+    width: 80px;
+  }
+}
+@media only screen and (min-width: 768px) {
+  section .container .top_right .icon_text img {
+    width: 150px;
+  }
 }
 section .container .top_right .icon_text img:last-child {
   width: 65px;
   transform: translateX(-8px);
+}
+@media only screen and (min-width: 576px) {
+  section .container .top_right .icon_text img:last-child {
+    width: 100px;
+    transform: translateX(-15px);
+  }
 }
 @media only screen and (min-width: 768px) {
   section .container .top_right .icon_text img:last-child {
@@ -157,9 +185,24 @@ section .container .bottom_left .icon_text img:first-child {
   margin-bottom: 15px;
   margin-top: 10px;
 }
+@media only screen and (min-width: 576px) {
+  section .container .bottom_left .icon_text img:first-child {
+    width: 45px;
+  }
+}
 @media only screen and (min-width: 768px) {
   section .container .bottom_left .icon_text img:first-child {
     width: 65px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  section .container .bottom_left .icon_text img:first-child {
+    width: 75px;
+  }
+}
+@media only screen and (min-width: 576px) {
+  section .container .bottom_left .icon_text img {
+    width: 62px;
   }
 }
 @media only screen and (min-width: 768px) {
@@ -234,6 +277,12 @@ section .container .bottom_left,
 section .container .bottom_right {
   margin-top: 30px;
 }
+@media only screen and (min-width: 1200px) {
+  section .container .bottom_left,
+section .container .bottom_right {
+    margin-top: 0px;
+  }
+}
 @media only screen and (min-width: 576px) {
   section .container {
     max-width: 540px;
@@ -274,10 +323,10 @@ section .container .bottom_right {
 }
 @media only screen and (min-width: 1200px) {
   section .container .left_left {
-    width: 370px;
+    width: 404px;
     position: absolute;
-    left: 0px;
-    top: 100px;
+    left: 35px;
+    top: 165px;
   }
   section .container .left_left img {
     width: 100%;
@@ -285,8 +334,8 @@ section .container .bottom_right {
 }
 @media only screen and (min-width: 1400px) {
   section .container .left_left {
-    width: 435px;
-    top: 90px;
+    width: 485px;
+    top: 140px;
   }
 }
 @media only screen and (min-width: 1200px) {
@@ -313,8 +362,8 @@ section .container .bottom_right {
 }
 @media only screen and (min-width: 1200px) {
   section .container .top_left .icon {
-    width: 70%;
-    margin-top: 5px;
+    width: 140px;
+    margin-top: 15px;
   }
 }
 @media only screen and (min-width: 1200px) {
@@ -331,6 +380,7 @@ section .container .bottom_right {
 @media only screen and (min-width: 1400px) {
   section .container .top_right {
     width: 500px;
+    right: -40px;
   }
 }
 @media only screen and (min-width: 1200px) {
@@ -365,6 +415,7 @@ section .container .bottom_right {
   section .container .top_right .icon_text img:last-child {
     width: 240px;
     margin-top: 20px;
+    margin-right: -25px;
   }
 }
 @media only screen and (min-width: 1200px) {
@@ -392,7 +443,7 @@ section .container .bottom_right {
 @media only screen and (min-width: 1400px) {
   section .container .bottom_right {
     width: 530px;
-    top: 356px;
+    top: 370px;
     justify-content: flex-end;
   }
 }
@@ -410,30 +461,32 @@ section .container .bottom_right {
 @media only screen and (min-width: 1200px) {
   section .container .bottom_right .icon_text {
     width: 160px;
-    transform: translateX(65px);
+    transform: translateX(40px);
     margin-top: 35px;
   }
 }
 @media only screen and (min-width: 1400px) {
   section .container .bottom_right .icon_text {
-    transform: translateX(70px);
-    width: 180px;
+    transform: translateX(20px);
+    width: 135px;
   }
 }
 @media only screen and (min-width: 1200px) {
   section .container .bottom_right .icon_text img {
-    width: 110px;
+    width: 100px;
   }
   section .container .bottom_right .icon_text img:last-child {
-    width: 135px;
+    width: 115px;
+    margin-top: 30px;
   }
 }
 @media only screen and (min-width: 1400px) {
   section .container .bottom_right .icon_text img {
-    width: 140px;
+    width: 115px;
   }
   section .container .bottom_right .icon_text img:last-child {
-    width: 170px;
+    width: 135px;
+    transform: translateX(10px);
   }
 }
 @media only screen and (min-width: 1200px) {
@@ -441,6 +494,7 @@ section .container .bottom_right {
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-end;
+    align-items: flex-end;
     width: 436px;
     position: absolute;
     top: 400px;
@@ -485,12 +539,24 @@ section .container .bottom_right {
     margin-top: 20px;
   }
 }
+@media only screen and (min-width: 1200px) and (min-width: 1200px) {
+  section .container .bottom_left .icon_text img:last-child {
+    width: 105px;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  section .container .bottom_left .icon_text img:last-child {
+    width: 105px;
+  }
+}
 @media only screen and (min-width: 1400px) {
   section .container .bottom_left .icon_text img {
     width: 90px;
   }
   section .container .bottom_left .icon_text img:first-child {
     margin-right: 25px;
+    width: 85px;
+    margin-bottom: 0px;
   }
   section .container .bottom_left .icon_text img:last-child {
     width: 115px;
@@ -504,7 +570,7 @@ section .line4 {
   height: 1px;
   top: 500px;
   position: absolute;
-  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='black' stroke-width='3' stroke-dasharray='5%2c 8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='black' stroke-width='3' stroke-dasharray='2%2c 2' stroke-dashoffset='0' stroke-linecap='butt'/%3e%3c/svg%3e");
 }
 section .line1 {
   width: 1px;
@@ -536,12 +602,13 @@ section .line1 {
     width: 120px;
     top: 125px;
     left: 215px;
+    height: 1px;
   }
 }
 @media only screen and (min-width: 1400px) {
   section .line1 {
     width: 270px;
-    top: 145px;
+    top: 110px;
     left: 255px;
   }
 }
@@ -574,12 +641,14 @@ section .line2 {
     width: 665px;
     top: 300px;
     left: 260px;
+    height: 1px;
   }
 }
 @media only screen and (min-width: 1400px) {
   section .line2 {
-    width: 840px;
-    top: 315px;
+    width: 790px;
+    top: 310px;
+    left: 310px;
   }
 }
 section .line3 {
@@ -611,15 +680,16 @@ section .line3 {
 @media only screen and (min-width: 1200px) {
   section .line3 {
     width: 585px;
-    left: 255px;
+    left: 285px;
     top: 340px;
+    height: 1px;
   }
 }
 @media only screen and (min-width: 1400px) {
   section .line3 {
-    width: 715px;
-    left: 300px;
-    top: 370px;
+    width: 680px;
+    left: 340px;
+    top: 375px;
   }
 }
 section .line4 {
@@ -654,13 +724,14 @@ section .line4 {
     width: 345px;
     left: 185px;
     top: 456px;
+    height: 1px;
   }
 }
 @media only screen and (min-width: 1400px) {
   section .line4 {
     width: 485px;
-    left: 210px;
-    top: 485px;
+    left: 215px;
+    top: 495px;
   }
 }
 

@@ -50,38 +50,39 @@ function fadeIn(target) {
 }
 
 // reset all element
-function resetAll() {
+function resetAllXl() {
     const tl = gsap.timeline();
+    tl.add(resE(".top_right .main_img", ["-290px", 0]))
+        .add(resE(".bottom_right .main_img", ["-300px", 0]))
+        .add(resE(".bottom_left .main_img", ["-225px", "-65px"]));
 
-    if (window.innerWidth > 1400) {
-        tl.add(resE(".top_right .main_img", ["-290px", 0]))
-            .add(resE(".bottom_right .main_img", ["-300px", 0]))
-            .add(resE(".bottom_left .main_img", ["-225px", "-65px"]));
-    }
-    if (window.innerWidth > 1200 && window.innerWidth < 1400) {
-        tl.add(resE(".top_right .main_img", ["-350px", 0]))
-            .add(resE(".bottom_right .main_img", ["-300px", 0]))
-            .add(resE(".bottom_left .main_img", ["-225px", "-65px"]));
-    }
+    return tl;
+}
+function resetAllXxl() {
+    const tl = gsap.timeline();
+    tl.add(resE(".top_right .main_img", ["-250px", 0]))
+        .add(resE(".bottom_right .main_img", ["-300px", 0]))
+        .add(resE(".bottom_left .main_img", ["-195px", "-60px"]));
+
     return tl;
 }
 
 // move aside
-function moveAside() {
+function moveAsideXl() {
     const tl = gsap.timeline();
+    tl.add(anmRes(".top_left .main_img", [310, 0]), "+=1")
+        .add(anmRes(".top_right .main_img", [0, 0]), "<")
+        .add(anmRes(".bottom_right .main_img", [0, 0]), "-=2.1")
+        .add(anmRes(".bottom_left .main_img", [100, -65]), "-=2.1");
 
-    if (window.innerWidth > 1400) {
-        tl.add(anmRes(".top_left .main_img", [280, 0]), "+=1")
-            .add(anmRes(".top_right .main_img", [0, 0]), "<")
-            .add(anmRes(".bottom_right .main_img", [0, 0]), "-=2.1")
-            .add(anmRes(".bottom_left .main_img", [100, -65]), "-=2.1");
-    }
-    if (window.innerWidth > 1200 && window.innerWidth < 1400) {
-        tl.add(anmRes(".top_left .main_img", [350, 0]), "+=1")
-            .add(anmRes(".top_right .main_img", [0, 0]), "<")
-            .add(anmRes(".bottom_right .main_img", [0, 0]), "-=2.1")
-            .add(anmRes(".bottom_left .main_img", [100, -65]), "-=2.1");
-    }
+    return tl;
+}
+function moveAsideXxl() {
+    const tl = gsap.timeline();
+    tl.add(anmRes(".top_left .main_img", [245, 0]), "+=1")
+        .add(anmRes(".top_right .main_img", [0, 0]), "<")
+        .add(anmRes(".bottom_right .main_img", [0, 0]), "-=2.1")
+        .add(anmRes(".bottom_left .main_img", [100, -65]), "-=2.1");
 
     return tl;
 }
@@ -128,11 +129,11 @@ function reverseAllSm() {
 // master timeline
 
 ScrollTrigger.matchMedia({
-    "(min-width: 1200px)": function () {
+    "(min-width: 1400px)": function () {
         masterTl
             .add(hideAll())
-            .add(resetAll())
-            .add(moveAside())
+            .add(resetAllXxl())
+            .add(moveAsideXxl())
             .add(fadeIn(".left_left img"))
             .add(getInPlaceAndZoomOut())
             .set(".line", {
@@ -149,6 +150,28 @@ ScrollTrigger.matchMedia({
                 delay: 0.1,
             });
     },
+    "(min-width: 1200px) and (max-width: 1399px)": function () {
+        masterTl
+            .add(hideAll())
+            .add(resetAllXl())
+            .add(moveAsideXl())
+            .add(fadeIn(".left_left img"))
+            .add(getInPlaceAndZoomOut())
+            .set(".line", {
+                opacity: 1,
+            })
+            .from(".line", {
+                width: 0,
+                duration: 2,
+                delay: 0.1,
+            })
+            .to(".icon, .icon_text", {
+                opacity: 1,
+                duration: 3,
+                delay: 0.1,
+            });
+    },
+
     "(max-width: 1199px)": function () {
         masterTl
             .add(hideAll())

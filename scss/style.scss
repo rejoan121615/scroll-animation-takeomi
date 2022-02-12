@@ -67,6 +67,9 @@ section {
         @include resp($md) {
             grid-template-rows: 1fr 380px 1fr;
         }
+        @include resp($xl) {
+            display: block;
+        }
         .left_left {
             grid-column: 1/-1;
             grid-row: 2/3;
@@ -130,14 +133,29 @@ section {
             .icon_text {
                 width: 50px;
                 margin-right: 10px;
+                @include resp($sm) {
+                    transform: translateX(-35px);
+                }
                 @include resp($md) {
                     width: 150px;
+                    transform: translateX(-5px);
                 }
                 img {
                     margin-top: 10px;
+                    width: 50px;
+                    @include resp($sm) {
+                        width: 80px;
+                    }
+                    @include resp($md) {
+                        width: 150px;
+                    }
                     &:last-child {
                         width: 65px;
                         transform: translateX(-8px);
+                        @include resp($sm) {
+                            width: 100px;
+                            transform: translateX(-15px);
+                        }
                         @include resp($md) {
                             width: 175px;
                             transform: translateX(-20px);
@@ -165,11 +183,20 @@ section {
                         width: 80%;
                         margin-bottom: 15px;
                         margin-top: 10px;
+                        @include resp($sm) {
+                            width: 45px;
+                        }
                         @include resp($md) {
                             width: 65px;
                         }
+                        @include resp($xl) {
+                            width: 75px;
+                        }
                     }
                     width: 100%;
+                    @include resp($sm) {
+                        width: 62px;
+                    }
                     @include resp($md) {
                         width: 90px;
                     }
@@ -228,6 +255,9 @@ section {
         .bottom_left,
         .bottom_right {
             margin-top: 30px;
+            @include resp($xl) {
+                margin-top: 0px;
+            }
         }
         // for all common style
         .left_left,
@@ -258,17 +288,17 @@ section {
         // left side phone img
         .left_left {
             @include resp($xl) {
-                width: 370px;
+                width: 404px;
                 position: absolute;
-                left: 0px;
-                top: 100px;
+                left: 35px;
+                top: 165px;
                 img {
                     width: 100%;
                 }
             }
             @include resp($xxl) {
-                width: 435px;
-                top: 90px;
+                width: 485px;
+                top: 140px;
             }
         }
         // top left
@@ -293,8 +323,8 @@ section {
             }
             .icon {
                 @include resp($xl) {
-                    width: 70%;
-                    margin-top: 5px;
+                    width: 140px;
+                    margin-top: 15px;
                 }
                 @include resp($xxl) {
                 }
@@ -313,6 +343,7 @@ section {
             }
             @include resp($xxl) {
                 width: 500px;
+                right: -40px;
             }
             .icon_text {
                 @include resp($xl) {
@@ -340,6 +371,7 @@ section {
                         &:last-child {
                             width: 240px;
                             margin-top: 20px;
+                            margin-right: -25px;
                         }
                     }
                 }
@@ -367,7 +399,7 @@ section {
             }
             @include resp($xxl) {
                 width: 530px;
-                top: 356px;
+                top: 370px;
                 justify-content: flex-end;
             }
             .main_img {
@@ -382,24 +414,26 @@ section {
             .icon_text {
                 @include resp($xl) {
                     width: 160px;
-                    transform: translateX(65px);
+                    transform: translateX(40px);
                     margin-top: 35px;
                 }
                 @include resp($xxl) {
-                    transform: translateX(70px);
-                    width: 180px;
+                    transform: translateX(20px);
+                    width: 135px;
                 }
                 img {
                     @include resp($xl) {
-                        width: 110px;
+                        width: 100px;
                         &:last-child {
-                            width: 135px;
+                            width: 115px;
+                            margin-top: 30px;
                         }
                     }
                     @include resp($xxl) {
-                        width: 140px;
+                        width: 115px;
                         &:last-child {
-                            width: 170px;
+                            width: 135px;
+                            transform: translateX(10px);
                         }
                     }
                 }
@@ -410,6 +444,7 @@ section {
             @include resp($xl) {
                 @include flex(row) {
                     justify-content: flex-end;
+                    align-items: flex-end;
                 }
                 width: 436px;
                 position: absolute;
@@ -446,12 +481,22 @@ section {
                         &:last-child {
                             width: 85px;
                             margin-top: 20px;
+                            @include resp($xl) {
+                                width: 105px;
+                            }
+                        }
+                    }
+                    &:last-child {
+                        @include resp($xl) {
+                            width: 105px;
                         }
                     }
                     @include resp($xxl) {
                         width: 90px;
                         &:first-child {
                             margin-right: 25px;
+                            width: 85px;
+                            margin-bottom: 0px;
                         }
                         &:last-child {
                             width: 115px;
@@ -468,10 +513,10 @@ section {
     .line4 {
         width: 100px;
         height: 1px;
-        // border-bottom: 2px dotted black;
+        // border-bottom: 1px dotted black;
         top: 500px;
         position: absolute;
-        background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='black' stroke-width='3' stroke-dasharray='5%2c 8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+        background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='black' stroke-width='3' stroke-dasharray='2%2c 2' stroke-dashoffset='0' stroke-linecap='butt'/%3e%3c/svg%3e");
     }
     .line1 {
         width: 1px;
@@ -495,10 +540,11 @@ section {
             width: 120px;
             top: 125px;
             left: 215px;
+            height: 1px;
         }
         @include resp($xxl) {
             width: 270px;
-            top: 145px;
+            top: 110px;
             left: 255px;
         }
     }
@@ -523,10 +569,12 @@ section {
             width: 665px;
             top: 300px;
             left: 260px;
+            height: 1px;
         }
         @include resp($xxl) {
-            width: 840px;
-            top: 315px;
+            width: 790px;
+            top: 310px;
+            left: 310px;
         }
     }
     .line3 {
@@ -550,13 +598,14 @@ section {
         }
         @include resp($xl) {
             width: 585px;
-            left: 255px;
+            left: 285px;
             top: 340px;
+            height: 1px;
         }
         @include resp($xxl) {
-            width: 715px;
-            left: 300px;
-            top: 370px;
+            width: 680px;
+            left: 340px;
+            top: 375px;
         }
     }
     .line4 {
@@ -583,11 +632,12 @@ section {
             width: 345px;
             left: 185px;
             top: 456px;
+            height: 1px;
         }
         @include resp($xxl) {
             width: 485px;
-            left: 210px;
-            top: 485px;
+            left: 215px;
+            top: 495px;
         }
     }
 }
