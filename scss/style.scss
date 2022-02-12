@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+// section {
+//     padding-top: 500px;
+//     padding-bottom: 500px;
+// }
+
 $sm: 576px;
 $md: 768px;
 $lg: 992px;
@@ -24,6 +29,12 @@ $respList: (
     }
 }
 
+@mixin respMax($width) {
+    @media only screen and (max-width: $width) {
+        @content;
+    }
+}
+
 @mixin flex($dir) {
     display: flex;
     flex-flow: $dir wrap;
@@ -33,7 +44,6 @@ $respList: (
 body {
     overflow-x: hidden;
 }
-
 
 img {
     width: 100%;
@@ -48,10 +58,189 @@ div {
 section {
     width: 100%;
     .container {
-        height: 600px;
+        // mobile version
+        display: grid;
+        grid-template-columns: 1fr 1.4fr;
+        grid-template-rows: 1fr 300px 1fr;
+        grid-column-gap: 15px;
+        padding-top: 50px;
+        @include resp($md) {
+            grid-template-rows: 1fr 380px 1fr;
+        }
+        .left_left {
+            grid-column: 1/-1;
+            grid-row: 2/3;
+            @include flex(row) {
+                justify-content: center;
+                align-items: center;
+            }
+            img {
+                width: 200px;
+                @include resp($sm) {
+                    width: 240px;
+                    margin-top: -30px;
+                    margin-left: -25px;
+                }
+                @include resp($md) {
+                    width: 330px;
+                    margin-top: -65px;
+                }
+                @include resp($lg) {
+                    width: 350px;
+                    margin-top: -83px;
+                    margin-left: -82px;
+                }
+            }
+        }
+        .top_left {
+            grid-column: 1/2;
+            grid-row: 1/2;
+            @include flex(column) {
+                align-items: center;
+            }
+            .main_img {
+                width: 130px;
+                @include resp($md) {
+                    width: 200px;
+                }
+            }
+            .icon {
+                margin-top: 10px;
+                width: 80px;
+                @include resp($md) {
+                    width: 115px;
+                }
+            }
+        }
+        .top_right {
+            grid-column: 2/3;
+            grid-row: 1/2;
+            display: flex;
+            flex-flow: row wrap;
+            align-items: flex-start;
+            @include resp($md) {
+                transform: translateX(-40px);
+            }
+            .main_img {
+                width: 110px;
+                @include resp($md) {
+                    width: 185px;
+                }
+            }
+            .icon_text {
+                width: 50px;
+                margin-right: 10px;
+                @include resp($md) {
+                    width: 150px;
+                }
+                img {
+                    margin-top: 10px;
+                    &:last-child {
+                        width: 65px;
+                        transform: translateX(-8px);
+                        @include resp($md) {
+                            width: 175px;
+                            transform: translateX(-20px);
+                        }
+                    }
+                }
+            }
+        }
+        .bottom_left {
+            grid-column: 1/2;
+            grid-row: 3/4;
+            @include flex(wrap) {
+                justify-content: flex-start;
+                align-items: flex-start;
+            }
+            .icon_text {
+                width: 40%;
+                margin-right: 8%;
+                @include flex(column) {
+                    justify-content: center;
+                    align-items: center;
+                }
+                img {
+                    &:first-child {
+                        width: 80%;
+                        margin-bottom: 15px;
+                        margin-top: 10px;
+                        @include resp($md) {
+                            width: 65px;
+                        }
+                    }
+                    width: 100%;
+                    @include resp($md) {
+                        width: 90px;
+                    }
+                }
+            }
+            .main_img {
+                width: 50%;
+                @include resp($md) {
+                    width: 190px;
+                }
+            }
+        }
+        .bottom_right {
+            grid-column: 2/3;
+            grid-row: 3/4;
+            @include flex(row) {
+                justify-content: flex-start;
+                align-items: flex-start;
+            }
+            .main_img {
+                width: 60%;
+                @include resp($sm) {
+                    width: 214px;
+                }
+                @include resp($md) {
+                    width: 288px;
+                }
+            }
+            .icon_text {
+                width: 40%;
+                @include flex(column) {
+                    align-items: center;
+                    justify-content: center;
+                }
+                @include resp($sm) {
+                    width: 30%;
+                }
+                @include resp($md) {
+                    width: 120px;
+                }
+                img {
+                    width: 50px;
+                    @include resp($md) {
+                        width: 90px;
+                    }
+                    &:last-child {
+                        width: 60px;
+                        margin-top: 15px;
+                        @include resp($md) {
+                            width: 105px;
+                        }
+                    }
+                }
+            }
+        }
+        .bottom_left,
+        .bottom_right {
+            margin-top: 30px;
+        }
+        // for all common style
+        .left_left,
+        .top_left,
+        .top_right,
+        .bottom_left,
+        .bottom_right {
+        }
+
+        // desktop version
         margin-left: auto;
         margin-right: auto;
-        max-width: 300px;
+        max-width: 320px;
         @each $screen, $val in $respList {
             @include resp($screen) {
                 max-width: $val;
@@ -62,10 +251,10 @@ section {
         }
         @include resp($xl) {
             position: relative;
-            height: 100%;
+            height: 100vh;
+            min-height: 650px;
             margin-top: 15px;
         }
-
         // left side phone img
         .left_left {
             @include resp($xl) {
@@ -182,8 +371,10 @@ section {
                 justify-content: flex-end;
             }
             .main_img {
-                width: 310px;
-                position: relative;
+                @include resp($xl) {
+                    width: 310px;
+                    position: relative;
+                }
                 @include resp($xxl) {
                     width: 335px;
                 }
@@ -238,12 +429,14 @@ section {
                 }
             }
             .icon_text {
-                width: 40%;
-                @include flex(column) {
-                    justify-content: flex-end;
-                    align-items: flex-end;
+                @include resp($xl) {
+                    width: 40%;
+                    @include flex(column) {
+                        justify-content: flex-end;
+                        align-items: flex-end;
+                    }
+                    margin-right: 10px;
                 }
-                margin-right: 10px;
                 img {
                     @include resp($xl) {
                         width: 70px;
@@ -267,14 +460,6 @@ section {
                 }
             }
         }
-        // for all common style 
-        // .left_left,
-        // .top_left,
-        // .top_right,
-        // .bottom_left,
-        // .bottom_right {
-        //     position: initial;
-        // }
     }
     // line style
     .line1,
@@ -283,11 +468,29 @@ section {
     .line4 {
         width: 100px;
         height: 1px;
-        border-bottom: 2px dotted black;
+        // border-bottom: 2px dotted black;
         top: 500px;
         position: absolute;
+        background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='black' stroke-width='3' stroke-dasharray='5%2c 8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
     }
     .line1 {
+        width: 1px;
+        height: 110px;
+        left: 122px;
+        top: 120px;
+        width: 1px;
+        @include resp($sm) {
+            left: 165px;
+            top: 125px;
+        }
+        @include resp($md) {
+            left: 230px;
+            top: 155px;
+            height: 170px;
+        }
+        @include resp($lg) {
+            left: 287px;
+        }
         @include resp($xl) {
             width: 120px;
             top: 125px;
@@ -300,6 +503,22 @@ section {
         }
     }
     .line2 {
+        width: 1px;
+        height: 145px;
+        right: 110px;
+        top: 188px;
+        @include resp($sm) {
+            right: 230px;
+            top: 190px;
+        }
+        @include resp($md) {
+            right: 286px;
+            top: 275px;
+            height: 220px;
+        }
+        @include resp($lg) {
+            right: 427px;
+        }
         @include resp($xl) {
             width: 665px;
             top: 300px;
@@ -311,6 +530,24 @@ section {
         }
     }
     .line3 {
+        right: 102px;
+        width: 1px;
+        top: 340px;
+        height: 195px;
+        @include resp($sm) {
+            height: 210px;
+            right: 213px;
+            top: 372px;
+        }
+        @include resp($md) {
+            height: 285px;
+            right: 280px;
+            top: 510px;
+        }
+        @include resp($lg) {
+            right: 425px;
+            top: 505px;
+        }
         @include resp($xl) {
             width: 585px;
             left: 255px;
@@ -323,6 +560,25 @@ section {
         }
     }
     .line4 {
+        width: 1px;
+        height: 130px;
+        left: 125px;
+        top: 405px;
+        position: absolute;
+        @include resp($sm) {
+            height: 150px;
+            left: 210px;
+            top: 435px;
+        }
+        @include resp($md) {
+            height: 195px;
+            left: 295px;
+            top: 605px;
+        }
+        @include resp($lg) {
+            height: 185px;
+            left: 373px;
+        }
         @include resp($xl) {
             width: 345px;
             left: 185px;
