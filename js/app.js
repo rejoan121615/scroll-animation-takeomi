@@ -1,84 +1,93 @@
 gsap.registerPlugin(ScrollTrigger);
-// const masterTl = gsap.timeline({
-//     scrollTrigger: {
-//         trigger: ".container",
-//         markers: true,
+const masterTl = gsap.timeline();
 
-//     }
-// });
+gsap.set(".left_left img, .line, .icon_text, .icon", {
+    opacity: 0,
+});
 
-// reset all style
+function resE(target, prop = [0, 0]) {
+    return gsap.set(target, {
+        translateX: prop[0],
+        translateY: prop[1],
+    });
+}
+
+// reset animation
+function anmRes(target, prop = [0, 0]) {
+    const tl = gsap.timeline();
+    tl.to(target, {
+        translateX: `${prop[0]}px`,
+        translateY: `${prop[1]}px`,
+        duration: 2,
+        delay: 0.1,
+    });
+
+    return tl;
+}
+
+// fade in animation
+function fadeIn(target) {
+    const tl = gsap.timeline();
+    tl.to(target, {
+        opacity: 1,
+        duration: 1.5,
+        delay: 0.1,
+    });
+
+    return tl;
+}
+
+// reset all element
 function resetAll() {
     const tl = gsap.timeline();
-    tl.set(".icon_text, .left_left .img_wrap", {
-        display: "none",
-    }).set(".container", {
-        gridTemplateRows: "150px 0px 150px",
-    });
-}
-
-// mobile space
-
-function mobileSpace(width) {
-    return gsap.timeline().to(".container", {
-        gridTemplateRows: width,
-        duration: 2,
-    });
-}
-
-// phone fade in effect
-function phoneFadeIn() {
-    const tl = gsap.timeline();
-    tl.to(".left_left .img_wrap", {
-        display: "block",
-    }).from(".left_left .img_wrap", {
-        opacity: 0,
-        duration: 1,
-        translateY: "25px",
-    });
+    tl.add(resE(".top_right .main_img", ["-350px", 0]))
+        .add(resE(".bottom_right .main_img", ["-300px", 0]))
+        .add(resE(".bottom_left .main_img", ["-225px", "-65px"]));
     return tl;
 }
 
-// icon fade in effect
-function iconFadeIn() {
+// move aside
+function moveAside() {
     const tl = gsap.timeline();
+    tl.add(anmRes(".top_left .main_img", [350, 0]), "+=1")
+        .add(anmRes(".top_right .main_img", [0, 0]), "<")
+        .add(anmRes(".bottom_right .main_img", [0, 0]), "-=2.1")
+        .add(anmRes(".bottom_left .main_img", [100, -65]), "-=2.1");
 
-    tl.to(".icon_text", {
-        display: "flex",
+    return tl;
+}
+
+// reset the place
+function getInPlaceAndZoomOut() {
+    const tl = gsap.timeline();
+    tl.add(anmRes(".top_left .main_img", [0, 0])).add(
+        anmRes(".bottom_left .main_img", [0, 0]), "<"
+    );
+    return tl;
+}
+
+function drawLine() {
+    
+}
+
+// master timeline
+masterTl
+    .add(resetAll())
+    .add(moveAside())
+    .add(fadeIn(".left_left img"))
+    .add(getInPlaceAndZoomOut())
+    .set(".line", {
+        opacity: 1
     })
-        .from(".icon_text", {
-            duration: 1,
-            width: 0,
-            height: 0,
-        })
-        .fromTo(
-            ".icon_text img",
-            {
-                opacity: 0,
-            },
-            {
-                opacity: 1,
-                duration: 2,
-            }
-        );
+    .from(".line", {
+        width: 0,
+        duration: 2,
+        delay: 0.1
+    })
+    .to(".icon, .icon_text", {
+        opacity: 1,
+        duration: 3,
+        delay: 0.1
+    })
+    
 
-    return tl;
-}
-
-// gsap.set(".container", {
-//   gridTemplateRows: "1fr 1fr",
-// })
-
-// function fadeIn(target) {
-//   return gsap.timeline().fromTo(target, {
-//     opacity: 0,
-//   }, {
-//     opacity: 1,
-//   })
-// }
-
-// masterTl
-//     .add(resetAll)
-//     .add(mobileSpace("150px 250px 150px"), "+=1")
-//     .add(phoneFadeIn())
-//     .add(iconFadeIn());
